@@ -151,24 +151,83 @@ setupReveal();
 })();
 
 // ============================================
-// Contact Form — Simple handler
+// Contact Form — EmailJS Integration
 // ============================================
 const form = document.getElementById('contactForm');
 
 if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.btn-submit');
-    const originalText = btn.textContent;
-    btn.textContent = '✓ Mensagem enviada!';
-    btn.style.background = '#22c55e';
-    btn.disabled = true;
+  // ⚠️ Substitua pelas suas credenciais do EmailJS (https://www.emailjs.com/)
+  const EMAILJS_PUBLIC_KEY = 'Fk-GbDCLM0XWboc95';
+  const EMAILJS_SERVICE_ID = 'service_b08dczp';
+  const EMAILJS_TEMPLATE_ID = 'template_ge0ehil';
 
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.style.background = '';
+  // Inicializa o EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btn = form.querySelector('.btn-submit');
+    const btnText = btn.querySelector('.btn-text');
+    const btnLoader = btn.querySelector('.btn-loader');
+    const statusDiv = document.getElementById('formStatus');
+
+    // Estado de loading
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btnText.textContent = 'Enviando...';
+    btnLoader.hidden = false;
+    statusDiv.hidden = true;
+    statusDiv.className = 'form-status';
+
+    // Dados do formulário
+    const templateParams = {
+      from_name: form.querySelector('#name').value,
+      from_email: form.querySelector('#email').value,
+      subject: form.querySelector('#subject').value,
+      message: form.querySelector('#message').value,
+    };
+
+    try {
+      if (typeof emailjs === 'undefined') {
+        throw new Error('EmailJS não carregado');
+      }
+
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+      // Sucesso
+      btnText.textContent = '✓ Enviado!';
+      btnLoader.hidden = true;
+      btn.classList.remove('loading');
+      btn.classList.add('success');
+      statusDiv.textContent = '✉️ Mensagem enviada com sucesso! Responderei em breve.';
+      statusDiv.classList.add('success');
+      statusDiv.hidden = false;
+
+      setTimeout(() => {
+        btnText.textContent = 'Enviar Mensagem';
+        btn.classList.remove('success');
+        btn.disabled = false;
+        statusDiv.hidden = true;
+        form.reset();
+      }, 4000);
+
+    } catch (error) {
+      // Erro
+      console.error('Erro ao enviar email:', error);
+      btnText.textContent = 'Enviar Mensagem';
+      btnLoader.hidden = true;
+      btn.classList.remove('loading');
       btn.disabled = false;
-      form.reset();
-    }, 3000);
+      statusDiv.textContent = '⚠️ Erro ao enviar. Tente novamente ou envie direto para joao.zuaretch@gmail.com';
+      statusDiv.classList.add('error');
+      statusDiv.hidden = false;
+
+      setTimeout(() => {
+        statusDiv.hidden = true;
+      }, 6000);
+    }
   });
 }
