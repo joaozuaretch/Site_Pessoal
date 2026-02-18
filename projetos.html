@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projetos — Lucas Ferreira</title>
+    <meta name="description"
+        content="Projetos de Lucas Ferreira: visualização matemática, algoritmos, simulações e ferramentas educacionais." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav id="navbar" class="navbar scrolled">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-symbol">∑</span> Lucas Ferreira
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+            <li><a href="formacao.html" class="nav-link">Formação</a></li>
+            <li><a href="projetos.html" class="nav-link">Projetos</a></li>
+            <li><a href="habilidades.html" class="nav-link">Habilidades</a></li>
+            <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Início</a>
+                <span class="breadcrumb-sep">›</span>
+                <span class="breadcrumb-current">Projetos</span>
+            </nav>
+            <div class="page-hero-icon">⚡</div>
+            <h1>Projetos</h1>
+            <p>Explorações em computação científica, visualização matemática e ferramentas educacionais.</p>
+        </div>
+    </section>
+
+    <!-- PROJETOS DETALHADOS -->
+    <section class="page-section">
+        <div class="container">
+
+            <!-- Projeto 1 -->
+            <div class="project-detail-card">
+                <div class="project-detail-header">
+                    <div class="project-detail-icon">∫</div>
+                    <div>
+                        <h3>Visualizador de Funções</h3>
+                        <span class="project-status">● Em desenvolvimento</span>
+                    </div>
+                </div>
+                <div class="project-detail-body">
+                    <p>
+                        Aplicação web interativa para visualização de funções reais e complexas, com suporte a
+                        transformações
+                        e animações em tempo real. O projeto utiliza WebGL para renderização de alta performance e
+                        permite
+                        ao usuário explorar funções matemáticas de maneira intuitiva.
+                    </p>
+                    <p>
+                        Inspirado pela necessidade de ferramentas visuais melhores durante as aulas de Análise Complexa,
+                        o
+                        visualizador permite ver mapeamentos conformes, transformações de Möbius e superfícies de
+                        Riemann
+                        em 3D interativo.
+                    </p>
+                    <div class="project-features">
+                        <span class="project-feature">Renderização WebGL em tempo real</span>
+                        <span class="project-feature">Suporte a funções complexas</span>
+                        <span class="project-feature">Animações de transformações</span>
+                        <span class="project-feature">Interface drag-and-drop</span>
+                        <span class="project-feature">Exportação de imagens HD</span>
+                        <span class="project-feature">Mapeamentos conformes</span>
+                    </div>
+                </div>
+                <div class="project-detail-footer">
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>WebGL</span>
+                        <span>Canvas API</span>
+                        <span>GLSL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub ↗</a>
+                        <a href="#" class="project-link">Demo ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 2 -->
+            <div class="project-detail-card">
+                <div class="project-detail-header">
+                    <div class="project-detail-icon">π</div>
+                    <div>
+                        <h3>Crivo de Eratóstenes Otimizado</h3>
+                        <span class="project-status">● Concluído</span>
+                    </div>
+                </div>
+                <div class="project-detail-body">
+                    <p>
+                        Implementação em C++ de múltiplos algoritmos para geração e teste de números primos, incluindo o
+                        Crivo de Eratóstenes clássico, Crivo de Atkin e Crivo Segmentado. O projeto inclui análise
+                        detalhada
+                        de complexidade computacional e benchmarks comparativos.
+                    </p>
+                    <p>
+                        Desenvolvido como parte da iniciação científica em Teoria dos Números, o projeto demonstra como
+                        otimizações algorítmicas podem reduzir drasticamente o tempo de computação para encontrar primos
+                        em intervalos grandes (até 10⁹).
+                    </p>
+                    <div class="project-features">
+                        <span class="project-feature">3 algoritmos implementados</span>
+                        <span class="project-feature">Benchmarks automáticos</span>
+                        <span class="project-feature">Análise de complexidade O(n log log n)</span>
+                        <span class="project-feature">Otimização com bit manipulation</span>
+                        <span class="project-feature">Testes unitários com Google Test</span>
+                        <span class="project-feature">Documentação com Doxygen</span>
+                    </div>
+                </div>
+                <div class="project-detail-footer">
+                    <div class="project-tech">
+                        <span>C++</span>
+                        <span>Algoritmos</span>
+                        <span>Teoria dos Números</span>
+                        <span>CMake</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub ↗</a>
+                        <a href="#" class="project-link">Artigo ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="project-detail-card">
+                <div class="project-detail-header">
+                    <div class="project-detail-icon">Σ</div>
+                    <div>
+                        <h3>Simulador de Séries Numéricas</h3>
+                        <span class="project-status">● Concluído</span>
+                    </div>
+                </div>
+                <div class="project-detail-body">
+                    <p>
+                        Ferramenta educacional interativa que ilustra convergência e divergência de séries infinitas com
+                        gráficos animados e testes interativos. Projetada para auxiliar estudantes de Cálculo e Análise
+                        Real a desenvolverem intuição sobre séries.
+                    </p>
+                    <p>
+                        O simulador permite ao estudante selecionar diferentes séries (geométrica, harmônica, p-séries,
+                        séries de potências) e observar visualmente o comportamento das somas parciais, aplicando
+                        critérios
+                        de convergência como o teste da razão, teste da raiz e teste integral.
+                    </p>
+                    <div class="project-features">
+                        <span class="project-feature">Visualização animada de somas parciais</span>
+                        <span class="project-feature">10+ séries pré-configuradas</span>
+                        <span class="project-feature">Testes de convergência interativos</span>
+                        <span class="project-feature">Notebooks Jupyter documentados</span>
+                    </div>
+                </div>
+                <div class="project-detail-footer">
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Matplotlib</span>
+                        <span>Jupyter</span>
+                        <span>ipywidgets</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 4 -->
+            <div class="project-detail-card">
+                <div class="project-detail-header">
+                    <div class="project-detail-icon">∇</div>
+                    <div>
+                        <h3>Resolução de EDOs com Runge-Kutta</h3>
+                        <span class="project-status">● Em desenvolvimento</span>
+                    </div>
+                </div>
+                <div class="project-detail-body">
+                    <p>
+                        Biblioteca Python para resolução numérica de equações diferenciais ordinárias usando métodos de
+                        Runge-Kutta de 1ª a 4ª ordem. Inclui comparação visual entre diferentes ordens de aproximação e
+                        análise de erro com soluções exatas conhecidas.
+                    </p>
+                    <p>
+                        Desenvolvido como projeto do curso de extensão do IMPA, a biblioteca oferece uma API simples e
+                        documentada, com gráficos comparativos automáticos e suporte a sistemas de EDOs.
+                    </p>
+                    <div class="project-features">
+                        <span class="project-feature">Métodos RK1 a RK4</span>
+                        <span class="project-feature">Suporte a sistemas de EDOs</span>
+                        <span class="project-feature">Análise de erro automática</span>
+                        <span class="project-feature">Gráficos comparativos</span>
+                        <span class="project-feature">Documentação Sphinx</span>
+                        <span class="project-feature">Testes com pytest</span>
+                    </div>
+                </div>
+                <div class="project-detail-footer">
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>SciPy</span>
+                        <span>EDO</span>
+                        <span>Matplotlib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub ↗</a>
+                        <a href="#" class="project-link">Docs ↗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 5 (Novo) -->
+            <div class="project-detail-card">
+                <div class="project-detail-header">
+                    <div class="project-detail-icon">𝓕</div>
+                    <div>
+                        <h3>Visualizador de Séries de Fourier</h3>
+                        <span class="project-status">● Concluído</span>
+                    </div>
+                </div>
+                <div class="project-detail-body">
+                    <p>
+                        Aplicação web que demonstra a decomposição de funções periódicas em séries de Fourier. O usuário
+                        pode desenhar uma forma de onda arbitrária e observar como os harmônicos individuais se combinam
+                        para aproximá-la.
+                    </p>
+                    <p>
+                        Projeto apresentado no Congresso Nacional de Matemática Aplicada, demonstrando a convergência
+                        das somas parciais de Fourier e fenômenos como o efeito Gibbs em descontinuidades.
+                    </p>
+                    <div class="project-features">
+                        <span class="project-feature">Desenho de formas de onda</span>
+                        <span class="project-feature">Visualização de harmônicos</span>
+                        <span class="project-feature">Demonstração do efeito Gibbs</span>
+                        <span class="project-feature">Animação em tempo real</span>
+                    </div>
+                </div>
+                <div class="project-detail-footer">
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>Canvas API</span>
+                        <span>Web Audio API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub ↗</a>
+                        <a href="#" class="project-link">Demo ↗</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Desenvolvido com <span class="heart">♥</span> e muita matemática por <strong>Lucas Ferreira</strong></p>
+        <p class="footer-small">© 2026 — Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

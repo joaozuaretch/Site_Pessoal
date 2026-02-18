@@ -2,67 +2,70 @@
 // Floating Math Symbols — Canvas Animation
 // ============================================
 const canvas = document.getElementById('mathCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-const symbols = ['∫', 'Σ', 'π', '∞', 'Δ', '∇', 'λ', 'θ', 'φ', 'ε', '∂', '√', 'ℝ', 'ℂ', '∈', '⊂', '∀', '∃', '≡', '±'];
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const symbols = ['∫', 'Σ', 'π', '∞', 'Δ', '∇', 'λ', 'θ', 'φ', 'ε', '∂', '√', 'ℝ', 'ℂ', '∈', '⊂', '∀', '∃', '≡', '±'];
 
-function createParticles() {
-  particles = [];
-  const count = Math.floor(window.innerWidth / 35);
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 18 + 12,
-      symbol: symbols[Math.floor(Math.random() * symbols.length)],
-      speedY: Math.random() * 0.4 + 0.1,
-      speedX: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.25 + 0.05,
-      rotation: Math.random() * Math.PI * 2,
-      rotationSpeed: (Math.random() - 0.5) * 0.01,
-    });
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
-}
 
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.rotation);
-    ctx.font = `${p.size}px 'Inter', sans-serif`;
-    ctx.fillStyle = `rgba(124, 106, 239, ${p.opacity})`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(p.symbol, 0, 0);
-    ctx.restore();
-
-    p.y -= p.speedY;
-    p.x += p.speedX;
-    p.rotation += p.rotationSpeed;
-
-    if (p.y < -30) {
-      p.y = canvas.height + 30;
-      p.x = Math.random() * canvas.width;
+  function createParticles() {
+    particles = [];
+    const count = Math.floor(window.innerWidth / 35);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 18 + 12,
+        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        speedY: Math.random() * 0.4 + 0.1,
+        speedX: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.25 + 0.05,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.01,
+      });
     }
-    if (p.x < -30) p.x = canvas.width + 30;
-    if (p.x > canvas.width + 30) p.x = -30;
-  });
-  requestAnimationFrame(drawParticles);
-}
+  }
 
-resizeCanvas();
-createParticles();
-drawParticles();
-window.addEventListener('resize', () => {
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.font = `${p.size}px 'Inter', sans-serif`;
+      ctx.fillStyle = `rgba(124, 106, 239, ${p.opacity})`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+
+      p.y -= p.speedY;
+      p.x += p.speedX;
+      p.rotation += p.rotationSpeed;
+
+      if (p.y < -30) {
+        p.y = canvas.height + 30;
+        p.x = Math.random() * canvas.width;
+      }
+      if (p.x < -30) p.x = canvas.width + 30;
+      if (p.x > canvas.width + 30) p.x = -30;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+
   resizeCanvas();
   createParticles();
-});
+  drawParticles();
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    createParticles();
+  });
+}
 
 // ============================================
 // Navbar — Scroll & Mobile Toggle
@@ -73,50 +76,42 @@ const navLinks = document.getElementById('navLinks');
 const allNavLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-navToggle.addEventListener('click', () => {
-  navToggle.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-
-allNavLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navToggle.classList.remove('open');
-    navLinks.classList.remove('open');
-  });
-});
-
-// ============================================
-// Active Nav Link on Scroll
-// ============================================
-const sections = document.querySelectorAll('.section');
-
-function updateActiveLink() {
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute('id');
-    }
-  });
-  allNavLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
 }
 
-window.addEventListener('scroll', updateActiveLink);
+allNavLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (navToggle) navToggle.classList.remove('open');
+    if (navLinks) navLinks.classList.remove('open');
+  });
+});
+
+// ============================================
+// Active Nav Link — Highlight current page
+// ============================================
+(function highlightCurrentPage() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  allNavLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage) {
+      link.classList.add('active');
+    }
+  });
+})();
 
 // ============================================
 // Scroll Reveal Animation
 // ============================================
 function setupReveal() {
   const revealElements = document.querySelectorAll(
-    '.sobre-grid, .timeline-item, .project-card, .skill-category, .contato-wrapper'
+    '.sobre-grid, .timeline-item, .project-card, .skill-category, .contato-wrapper, .detail-card, .project-detail-card, .skill-detail-category, .contact-info-card, .stat-card, .bio-text'
   );
   revealElements.forEach(el => el.classList.add('reveal'));
 
@@ -134,22 +129,46 @@ function setupReveal() {
 setupReveal();
 
 // ============================================
+// Skill Bar Animation (Habilidades page)
+// ============================================
+(function setupSkillBars() {
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  if (skillBars.length === 0) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        const width = fill.getAttribute('data-width');
+        fill.style.width = width;
+        fill.classList.add('animated');
+        observer.unobserve(fill);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  skillBars.forEach(bar => observer.observe(bar));
+})();
+
+// ============================================
 // Contact Form — Simple handler
 // ============================================
 const form = document.getElementById('contactForm');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const btn = form.querySelector('.btn-submit');
-  const originalText = btn.textContent;
-  btn.textContent = '✓ Mensagem enviada!';
-  btn.style.background = '#22c55e';
-  btn.disabled = true;
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.btn-submit');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Mensagem enviada!';
+    btn.style.background = '#22c55e';
+    btn.disabled = true;
 
-  setTimeout(() => {
-    btn.textContent = originalText;
-    btn.style.background = '';
-    btn.disabled = false;
-    form.reset();
-  }, 3000);
-});
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+      form.reset();
+    }, 3000);
+  });
+}
